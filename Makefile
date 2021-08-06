@@ -1,6 +1,11 @@
 all:
 	@echo 'Usage: make [build]'
 
+check:
+	npm audit
+	CI=true npm test -- --coverage
+
+
 build:
 	# Deployment
 	docker build -t portal:latest .
