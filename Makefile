@@ -2,7 +2,7 @@ all:
 	@echo 'Usage: make [build]'
 
 check:
-	npm audit
+	npm audit --production
 	CI=true npm test -- --coverage
 
 
