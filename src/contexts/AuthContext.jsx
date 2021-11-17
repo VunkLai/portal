@@ -122,18 +122,19 @@ export function AuthProvider(props) {
       const response = await api.register(state.server, username, password);
       console.log("register", response);
     } catch (err) {
-      console.err("register", err);
+      console.error("register", err);
     }
   };
 
   const login = async (username, password) => {
+    console.log("login");
     try {
       const user = await api.login(state.server, username, password);
       window.sessionStorage.setItem("user", JSON.stringify(user));
       dispatch({ name: "LOGIN", payload: { user } });
       console.log("login", user);
     } catch (err) {
-      console.err("login", err);
+      console.error("login", err);
     }
   };
 
@@ -150,7 +151,7 @@ export function AuthProvider(props) {
         dispatch({ name: "REFRESH", payload: { user } });
         console.log("refresh", user);
       } catch (err) {
-        console.err("refresh", err);
+        console.error("refresh", err);
       }
     }
   };
@@ -163,7 +164,7 @@ export function AuthProvider(props) {
         dispatch({ name: "LOGOUT" });
         console.log("logout", response);
       } catch (err) {
-        console.err("logout", err);
+        console.error("logout", err);
       }
     }
   };
@@ -181,7 +182,7 @@ export function AuthProvider(props) {
         dispatch({ name: "CHANGE_PASSWORD" });
         console.log("changePassword", response);
       } catch (err) {
-        console.err("change-password", err);
+        console.error("change-password", err);
       }
     }
   };
